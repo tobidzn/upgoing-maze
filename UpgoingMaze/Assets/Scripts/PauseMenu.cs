@@ -26,6 +26,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] string CurrentDiff = "Easy", SelectedDiff = "Easy";
 
     bool isLost = false;
+    bool isInDiffMenu = false;
 
     private void Start()
     {
@@ -43,6 +44,10 @@ public class PauseMenu : MonoBehaviour
             if (GameIsPaused)
             {
                 if (isLost)
+                {
+                    return;
+                }
+                else if (isInDiffMenu)
                 {
                     return;
                 }
@@ -109,6 +114,7 @@ public class PauseMenu : MonoBehaviour
     {
         diffMenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
+        isInDiffMenu = true;
     }
 
     public void HardBT()
